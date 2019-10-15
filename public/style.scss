@@ -1,0 +1,298 @@
+// Google Fonts =======================================================
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap");
+
+// Colors =============================================================
+$primary-color: #0d47a1;
+$secondary-color: #eeeeee;
+$tertiary-color: #9e9e9e;
+
+// Widths =============================================================
+$width-mobile: 300px;
+$width-desktop: 1000px;
+$min-width-desktop: 500px;
+$max-width-desktop: 1000px;
+
+// Font-size ==========================================================
+$text-mobile: 13px;
+$text-desktop: 20px;
+$title-mobile: 20px;
+$title-desktop: 30px;
+$text-mobile-sm: 10px;
+$newsletter-mobile: 15px;
+
+// Font-weight ========================================================
+$bold: 700;
+$light: 300;
+
+// Mixins =============================================================
+@mixin reset {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin margin-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin absolute-center {
+  left: 0%;
+  right: 0%;
+}
+
+@mixin box-shadow() {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+// Defaults ===========================================================
+h1,
+h2,
+h3,
+p,
+a,
+ul,
+li,
+body {
+  display: flex;
+  @include reset();
+  list-style: none;
+  text-decoration: none;
+  flex-direction: column;
+  font-family: Montserrat;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+// Nav ================================================================
+nav {
+  width: 100%;
+  background-color: $primary-color;
+
+  .nav-container {
+    display: flex;
+    max-width: $width-desktop;
+    flex-direction: row;
+    @include margin-center();
+    justify-content: space-between;
+
+    .logo-container {
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      .logo {
+        display: none;
+      }
+    }
+
+    .subscribe-container {
+      display: flex;
+      position: relative;
+      align-items: center;
+      .subscribe-label {
+        left: 10px;
+        position: absolute;
+        color: $primary-color;
+        font-size: $text-mobile-sm;
+      }
+
+      .subscribe-input {
+        border: none;
+        height: 25px;
+        width: 200px;
+        padding-left: 10px;
+      }
+
+      .subscribe-button {
+        right: 0;
+        border: none;
+        display: flex;
+        background: none;
+        position: absolute;
+        align-items: center;
+      }
+    }
+
+    .menu-container {
+      border: none;
+      display: flex;
+      padding: 10px 0;
+      background: none;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+
+      .menu-label {
+        padding: 0 10px;
+        color: $secondary-color;
+        font-size: $text-mobile;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $min-width-desktop) {
+  nav {
+    .nav-container {
+      .logo-container {
+        .logo {
+          display: block;
+        }
+
+        .logo-small {
+          display: none;
+        }
+      }
+      .menu-container {
+        .menu-icon {
+          display: block;
+        }
+        .menu-icon-mobile {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  nav {
+    .nav-container {
+      @include margin-center();
+      flex-direction: column;
+
+      .logo-container {
+        @include margin-center();
+      }
+
+      .subscribe-container {
+        width: 90%;
+        @include margin-center();
+        .subscribe-input {
+          width: 100%;
+        }
+      }
+
+      .menu-container {
+        @include margin-center();
+      }
+    }
+  }
+}
+
+// Main ===============================================================
+.main-container {
+  width: 90%;
+  display: flex;
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 60px;
+  flex-direction: column;
+  @include margin-center();
+  max-width: $width-desktop;
+
+  .title-container {
+    display: flex;
+    margin: 10px 0;
+    color: $primary-color;
+    flex-direction: column;
+
+    .info-space {
+      padding: 0 5px;
+    }
+
+    .title-info-container {
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      color: $tertiary-color;
+      font-size: $text-mobile;
+      justify-content: flex-start;
+
+      .article-author {
+        display: inline-block;
+      }
+
+      .comment-icon-container {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
+  .video-container {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .article-container {
+    width: 100%;
+    height: auto;
+
+    .paragraph {
+      margin: 5px 0;
+    }
+
+    .read-more {
+      margin: 10px 0;
+    }
+  }
+}
+
+// Footer =============================================================
+footer {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  background-color: $primary-color;
+
+  .footer-container {
+    width: 90%;
+    display: flex;
+    margin: 10px 5%;
+    flex-direction: row;
+    align-items: center;
+    @include margin-center();
+    max-width: $width-desktop;
+    justify-content: space-between;
+
+    .back-to-site-link {
+      width: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      background-color: $secondary-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      img {
+        display: block;
+        margin-right: 10px;
+      }
+    }
+    .copyright {
+      color: $secondary-color;
+      font-size: $text-mobile-sm;
+    }
+  }
+}

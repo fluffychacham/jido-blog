@@ -1,16 +1,17 @@
 import React, { Component } from "react";
+import "./app.css";
 import Nav from "./components/nav/nav";
-import MainContent from "./components/main_content/main_content";
 import Footer from "./components/footer/footer";
+import MainContent from "./components/main_content/main_content";
 
 export default class App extends Component {
   render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <Nav />
         <MainContent />
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }
